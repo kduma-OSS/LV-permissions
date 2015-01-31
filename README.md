@@ -94,9 +94,9 @@ you can import them by placing this sample method in your `User` model:
 ```PHP
 protected function fetchAddionalPermissions($roles_list, $permissions_list)
 {
-    $user->load('member.role.permissions');
-    if(!is_null($user->member) && !is_null($user->member->role)){
-        $role = $user->member->role;
+    $this->load('member.role.permissions');
+    if(!is_null($this->member) && !is_null($this->member->role)){
+        $role = $this->member->role;
         $roles_list[$role->str_id] = $role;
         foreach ($role->permissions as $permission) {
             $permissions_list[$permission->str_id] = $permission;
