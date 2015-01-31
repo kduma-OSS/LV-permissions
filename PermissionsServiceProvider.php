@@ -1,6 +1,7 @@
 <?php namespace KDuma\Permissions;
 
 use Illuminate\Support\ServiceProvider;
+use KDuma\Permissions\Helpers\PermissionsAdderHelper;
 use KDuma\Permissions\Helpers\PermissionsTemplateHelper;
 
 class PermissionsServiceProvider extends ServiceProvider {
@@ -37,6 +38,10 @@ class PermissionsServiceProvider extends ServiceProvider {
 		$this->app->singleton('permissions.templatehelper', function()
 		{
 			return new PermissionsTemplateHelper();
+		});
+		$this->app->singleton('permissions.adderhelper', function()
+		{
+			return new PermissionsAdderHelper();
 		});
 //
 //		$this->commands('command.config.env');

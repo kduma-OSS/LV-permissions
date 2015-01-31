@@ -32,14 +32,7 @@ trait Permissions {
                 }
                 if(method_exists($user, 'fetchAddionalPermissions'))
                     list($roles_list, $permissions_list) = $user->fetchAddionalPermissions($roles_list, $permissions_list);
-//                $user->load('member.role.permissions');
-//                if(!is_null($user->member) && !is_null($user->member->role)){
-//                    $role = $user->member->role;
-//                    $roles_list[$role->str_id] = $role;
-//                    foreach ($role->permissions as $permission) {
-//                        $permissions_list[$permission->str_id] = $permission;
-//                    }
-//                }
+
                 return [$roles_list, $permissions_list];
             };
 
