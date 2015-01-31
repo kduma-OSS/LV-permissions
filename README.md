@@ -1,7 +1,15 @@
 # L5-permissions
 
 
-# Set up
+# Setup
+Add the package to the require section of your composer.json and run `composer update`
+
+    "kduma/permissions": "1.0.*@dev"
+
+Then add the Service Provider to the providers array in `config/app.php`:
+
+    'KDuma\Permissions\PermissionsServiceProvider',
+    
 in your `User` model (`app/User.php`) add following line:
 
     use \KDuma\Permissions\Permissions;

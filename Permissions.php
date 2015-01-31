@@ -16,8 +16,10 @@ trait Permissions {
 
     protected function fetchPermissions(){
         if($this->permissions_fetched == false) {
+            $cache_time = config('permissions.cache_time', 60);
+
             $user = $this;
-            list($this->roles_list, $this->permissions_list) = \Cache::remember('user.permissions.'.$user->id, 60, function() use ($user)
+            $getCallback = function() use ($user)
             {
                 $roles_list = [];
                 $permissions_list = [];
@@ -37,7 +39,13 @@ trait Permissions {
 //                    }
 //                }
                 return [$roles_list, $permissions_list];
-            });
+            };
+
+            if(is_null($cache_time))
+                list($this->roles_list, $this->permissions_list) = $getCallback();
+            else
+                list($this->roles_list, $this->permissions_list) = \Cache::remember('user.permissions.'.$user->id, $cache_time, $getCallback);
+
             $this->permissions_fetched = true;
         }
     }
@@ -48,7 +56,7 @@ trait Permissions {
             return $this->permissions_list;
         }
 
-        $root_permission = \Config::get('permissions.root_permission');
+        $root_permission = config('permissions.root_permission');
         if($root_permission != '' && $this->is($root_permission))
             return true;
         if($permission instanceof Permission){

@@ -1,6 +1,7 @@
 <?php namespace KDuma\Permissions;
 
 use Illuminate\Support\ServiceProvider;
+use KDuma\Permissions\Helpers\PermissionsTemplateHelper;
 
 class PermissionsServiceProvider extends ServiceProvider {
 
@@ -33,10 +34,10 @@ class PermissionsServiceProvider extends ServiceProvider {
 		$this->mergeConfigFrom(
 			__DIR__.'/Config/permissions.php', 'permissions'
 		);
-//		$this->app->singleton('command.config.env', function()
-//		{
-//			return new DotEnvFillerCommand();
-//		});
+		$this->app->singleton('permissions.templatehelper', function()
+		{
+			return new PermissionsTemplateHelper();
+		});
 //
 //		$this->commands('command.config.env');
 	}

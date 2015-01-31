@@ -12,7 +12,16 @@ return [
 
     'root_permission' => 'admin',
 
+    /*
+    |--------------------------------------------------------------------------
+    | User permissions cache time in minutes (default: 60)
+    |--------------------------------------------------------------------------
+    |
+    | Set to null, to disable caching.
+    |
+    */
 
+    'cache_time' => 60,
 
 
 
