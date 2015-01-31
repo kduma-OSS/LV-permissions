@@ -47,9 +47,22 @@ or
 Permissions::is('role');
 ```
     
-    
-    
-    
+## Creating/deleting roles and permissions
+To manage roles and permissions you can use `PermissionsManager` Facaade.  
+The easiest way to manage permissions is putting them in migrations files.  
+
+`PermissionsManager` Facaade has bunch of usefull methods:
+
+- Roles
+    - `PermissionsManager::createRole('ROLE_STRING_ID', 'ROLE_DESCRIPTION');`
+    - `PermissionsManager::deleteRole('ROLE_STRING_ID');`
+- Permission
+    - `PermissionsManager::createPermission('PERMISSION_STRING_ID', 'PERMISSION_DESCRIPTION');`
+    - `PermissionsManager::deletePermission('PERMISSION_STRING_ID');`
+- Attaching and Detaching roles and permissions
+    - `PermissionsManager::attach('ROLES_LIST', 'PERMISSIONS_LIST');`
+    - `PermissionsManager::detach('ROLES_LIST', 'PERMISSIONS_LIST');`
+
     
     
     

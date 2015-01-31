@@ -62,7 +62,7 @@ class PermissionsAdderHelper {
 
     }
 
-    function dettach($roles, $permissions){
+    function detach($roles, $permissions){
         list($roles_id_list, $permissions_id_list) = $this->_getIDList($roles, $permissions);
         if(empty($roles_id_list))
             return false;
