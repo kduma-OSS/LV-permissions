@@ -23,6 +23,10 @@ Add following line in your base controller (`app/Http/Controllers/Controller.php
 
     use \KDuma\Permissions\ProtectTrait;
 
+Import migrations from migrations folder. First 4 are necessary, last two are examples you can use or make new based on.
+
+- In `0000_00_00_000005_create_and_assign_roles_and_permissions.php` migration file are sample Roles and Permissions
+- In `0000_00_00_000006_create_administrator_account.php` migration file is created administrator account
 
 # Usage
 ## Protecting controllers
