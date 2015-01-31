@@ -1,5 +1,5 @@
 # L5-permissions
-
+Simple (really?) package to provide Roles and Permissions to Laravel 5
 
 # Setup
 Add the package to the require section of your composer.json and run `composer update`
@@ -122,3 +122,6 @@ protected function fetchAddionalPermissions($roles_list, $permissions_list)
     return [$roles_list, $permissions_list];
 }
 ```
+
+# Packagist
+View this package on Packagist.org: [kduma/permissions](https://packagist.org/packages/kduma/permissions)

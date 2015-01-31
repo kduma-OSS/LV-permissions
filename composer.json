@@ -1,7 +1,7 @@
 {
   "name": "kduma/permissions",
-  "description": "",
-  "keywords": ["laravel", "eloquent", "permission"],
+  "description": "Simple (really?) package to provide Roles and Permissions to Laravel 5",
+  "keywords": ["laravel", "eloquent", "permission", "roles"],
   "license": "MIT",
   "authors": [
     {
