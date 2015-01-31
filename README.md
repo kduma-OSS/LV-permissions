@@ -4,7 +4,7 @@
 # Setup
 Add the package to the require section of your composer.json and run `composer update`
 
-    "kduma/permissions": "1.0.*@dev"
+    "kduma/permissions": "~1.0"
 
 Then add the Service Provider to the providers array in `config/app.php`:
 
