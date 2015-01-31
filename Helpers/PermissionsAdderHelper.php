@@ -92,10 +92,10 @@ class PermissionsAdderHelper {
         $permissions_id_list = [];
         if (is_array($permissions)) {
             foreach ($permissions as $permission) {
-                $permissions_id_list[] = $this->_getIDListHelper($permission, true);
+                $permissions_id_list[] = $this->_getIDListHelper($permission, false);
             }
         } else {
-            $permissions_id_list[] = $this->_getIDListHelper($permissions, true);
+            $permissions_id_list[] = $this->_getIDListHelper($permissions, false);
         }
         return array($roles_id_list, $permissions_id_list);
     }
