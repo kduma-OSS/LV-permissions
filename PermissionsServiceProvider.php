@@ -4,12 +4,12 @@ use Illuminate\Support\ServiceProvider;
 
 class PermissionsServiceProvider extends ServiceProvider {
 
-	/**
-	 * Indicates if loading of the provider is deferred.
-	 *
-	 * @var bool
-	 */
-	protected $defer = true;
+//	/**
+//	 * Indicates if loading of the provider is deferred.
+//	 *
+//	 * @var bool
+//	 */
+//	protected $defer = true;
 
 	/**
 	 * Bootstrap the application services.
@@ -18,7 +18,9 @@ class PermissionsServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		//
+//		$this->publishes([
+//			__DIR__.'/Config/permissions.php' => config_path('permissions.php'),
+//		]);
 	}
 
 	/**
@@ -28,12 +30,15 @@ class PermissionsServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$this->app->singleton('command.config.env', function()
-		{
-			return new DotEnvFillerCommand();
-		});
-
-		$this->commands('command.config.env');
+		$this->mergeConfigFrom(
+			__DIR__.'/Config/permissions.php', 'permissions'
+		);
+//		$this->app->singleton('command.config.env', function()
+//		{
+//			return new DotEnvFillerCommand();
+//		});
+//
+//		$this->commands('command.config.env');
 	}
 
 	/**
@@ -43,9 +48,9 @@ class PermissionsServiceProvider extends ServiceProvider {
 	 */
 	public function provides()
 	{
-		return array(
-			'command.config.env'
-		);
+//		return array(
+//			'command.config.env'
+//		);
 	}
 
 }

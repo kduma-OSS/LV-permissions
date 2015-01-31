@@ -44,12 +44,17 @@ trait Permissions {
 
     public function can($permission){
         $this->fetchPermissions();
+        if(is_null($permission)){
+            return $this->permissions_list;
+        }
+
+        $root_permission = \Config::get('permissions.root_permission');
+        if($root_permission != '' && $this->is($root_permission))
+            return true;
         if($permission instanceof Permission){
             return isset($this->permissions_list[$permission->str_id]);
         }elseif(is_string($permission)){
             return isset($this->permissions_list[$permission]);
-        }elseif(is_null($permission)){
-            return $this->permissions_list;
         }
         throw new \Exception('Unsupported parameter');
     }
