@@ -8,12 +8,12 @@ class Role extends Model {
 
     public function Users()
     {
-        return $this->belongsToMany('\App\User')->withTimestamps();
+        return $this->belongsToMany(config('permissions.models.User'))->withTimestamps();
     }
 
     public function Permissions()
     {
-        return $this->belongsToMany('\KDuma\Permissions\Models\Permission')->withTimestamps();
+        return $this->belongsToMany(config('permissions.models.Permission'))->withTimestamps();
     }
 
 //    public function members()

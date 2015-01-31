@@ -23,7 +23,20 @@ return [
 
     'cache_time' => 60,
 
+    /*
+    |--------------------------------------------------------------------------
+    | model's name's
+    |--------------------------------------------------------------------------
+    |
+    | If you want you can extend those models and set your models here.
+    |
+    */
 
+    'models' => [
+        'User'          => '\App\User',
+        'Role'          => '\KDuma\Permissions\Models\Role',
+        'Permission'    => '\KDuma\Permissions\Models\Permission',
+    ],
 
 
 

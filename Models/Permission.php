@@ -8,7 +8,7 @@ class Permission extends Model {
 
     public function roles()
     {
-        return $this->belongsToMany('\KDuma\Permissions\Models\Role')->withTimestamps();
+        return $this->belongsToMany(config('permissions.models.Role'))->withTimestamps();
     }
 
 }

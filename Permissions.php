@@ -11,7 +11,7 @@ trait Permissions {
 
     public function roles()
     {
-        return $this->belongsToMany('\KDuma\Permissions\Models\Role')->withTimestamps();
+        return $this->belongsToMany(config('permissions.models.Role'))->withTimestamps();
     }
 
     protected function fetchPermissions(){
