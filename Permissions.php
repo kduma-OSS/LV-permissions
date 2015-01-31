@@ -19,6 +19,8 @@ trait Permissions {
             $user = $this;
             list($this->roles_list, $this->permissions_list) = \Cache::remember('user.permissions.'.$user->id, 60, function() use ($user)
             {
+                $roles_list = [];
+                $permissions_list = [];
                 $user->load('roles.permissions');
                 foreach ($user->roles as $role) {
                     $roles_list[$role->str_id] = $role;
