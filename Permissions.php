@@ -15,7 +15,7 @@ trait Permissions {
     }
 
     protected function fetchPermissions(){
-        if($this->permissions_fetched == false) {
+        if($this->permissions_fetched === false) {
             $cache_time = config('permissions.cache_time', 60);
 
             $user = $this;

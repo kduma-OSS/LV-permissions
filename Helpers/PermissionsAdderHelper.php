@@ -15,23 +15,16 @@ use KDuma\Permissions\Models\Role;
 
 class PermissionsAdderHelper {
 
-//    public $permissions = [];
-//    public $roles = [];
-//    public $role_permissions = [];
-
-
     function createRole($str, $name){
         $role = Role::firstOrNew(['str_id' => $str]);
         $role->name = $name;
         $role->save();
         return $role;
-//        $this->roles[$str] = $name;
     }
 
     function deleteRole($str){
         Role::where('str_id', $str)->delete();
         return true;
-//        unset($this->roles[$str]);
     }
 
     function createPermission($str, $name){
@@ -39,8 +32,6 @@ class PermissionsAdderHelper {
         $permission->name = $name;
         $permission->save();
         return $permission;
-//        $this->permissions[$str] = $name;
-//        unset($this->permissions[$str]);
     }
     function deletePermission($str){
         Permission::where('str_id', $str)->delete();
@@ -48,7 +39,7 @@ class PermissionsAdderHelper {
     }
 
     function attach($roles, $permissions){
-        list($roles_id_list, $permissions_id_list) = $this->_getIDList($roles, $permissions);
+        list($roles_id_list, $permissions_id_list) = $this->getIdList($roles, $permissions);
         if(empty($roles_id_list))
             return false;
         if(empty($permissions_id_list))
@@ -63,7 +54,7 @@ class PermissionsAdderHelper {
     }
 
     function detach($roles, $permissions){
-        list($roles_id_list, $permissions_id_list) = $this->_getIDList($roles, $permissions);
+        list($roles_id_list, $permissions_id_list) = $this->getIdList($roles, $permissions);
         if(empty($roles_id_list))
             return false;
         if(empty($permissions_id_list))
@@ -79,23 +70,23 @@ class PermissionsAdderHelper {
      * @param $permissions
      * @return array
      */
-    protected function _getIDList($roles, $permissions)
+    protected function getIdList($roles, $permissions)
     {
         $roles_id_list = [];
         if (is_array($roles)) {
             foreach ($roles as $role) {
-                $roles_id_list[] = $this->_getIDListHelper($role, true);
+                $roles_id_list[] = $this->getIdListHelper($role, true);
             }
         } else {
-            $roles_id_list[] = $this->_getIDListHelper($roles, true);
+            $roles_id_list[] = $this->getIdListHelper($roles, true);
         }
         $permissions_id_list = [];
         if (is_array($permissions)) {
             foreach ($permissions as $permission) {
-                $permissions_id_list[] = $this->_getIDListHelper($permission, false);
+                $permissions_id_list[] = $this->getIdListHelper($permission, false);
             }
         } else {
-            $permissions_id_list[] = $this->_getIDListHelper($permissions, false);
+            $permissions_id_list[] = $this->getIdListHelper($permissions, false);
         }
         return array($roles_id_list, $permissions_id_list);
     }
@@ -103,7 +94,7 @@ class PermissionsAdderHelper {
     /**
      * @param $thing
      */
-    protected function _getIDListHelper($thing, $role=false)
+    protected function getIdListHelper($thing, $role=false)
     {
         if (is_object($thing)) {
             return $thing->id;
