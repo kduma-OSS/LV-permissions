@@ -28,7 +28,6 @@ class PermissionsHelper {
         $can = self::can($permission, $user);
         if(!$can){
             abort(401);
-            exit;
         }
         return true;
     }
