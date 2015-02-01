@@ -6,12 +6,12 @@ class Role extends Model {
 
     protected $fillable = ['str_id','name'];
 
-    public function Users()
+    public function users()
     {
         return $this->belongsToMany(config('permissions.models.User'))->withTimestamps();
     }
 
-    public function Permissions()
+    public function permissions()
     {
         return $this->belongsToMany(config('permissions.models.Permission'))->withTimestamps();
     }

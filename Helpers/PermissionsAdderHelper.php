@@ -39,7 +39,7 @@ class PermissionsAdderHelper {
     }
 
     function attach($roles, $permissions){
-        list($roles_id_list, $permissions_id_list) = $this->_getIDList($roles, $permissions);
+        list($roles_id_list, $permissions_id_list) = $this->_getIdList($roles, $permissions);
         if(empty($roles_id_list))
             return false;
         if(empty($permissions_id_list))
@@ -54,7 +54,7 @@ class PermissionsAdderHelper {
     }
 
     function detach($roles, $permissions){
-        list($roles_id_list, $permissions_id_list) = $this->_getIDList($roles, $permissions);
+        list($roles_id_list, $permissions_id_list) = $this->_getIdList($roles, $permissions);
         if(empty($roles_id_list))
             return false;
         if(empty($permissions_id_list))
@@ -70,23 +70,23 @@ class PermissionsAdderHelper {
      * @param $permissions
      * @return array
      */
-    protected function _getIDList($roles, $permissions)
+    protected function _getIdList($roles, $permissions)
     {
         $roles_id_list = [];
         if (is_array($roles)) {
             foreach ($roles as $role) {
-                $roles_id_list[] = $this->_getIDListHelper($role, true);
+                $roles_id_list[] = $this->_getIdListHelper($role, true);
             }
         } else {
-            $roles_id_list[] = $this->_getIDListHelper($roles, true);
+            $roles_id_list[] = $this->_getIdListHelper($roles, true);
         }
         $permissions_id_list = [];
         if (is_array($permissions)) {
             foreach ($permissions as $permission) {
-                $permissions_id_list[] = $this->_getIDListHelper($permission, false);
+                $permissions_id_list[] = $this->_getIdListHelper($permission, false);
             }
         } else {
-            $permissions_id_list[] = $this->_getIDListHelper($permissions, false);
+            $permissions_id_list[] = $this->_getIdListHelper($permissions, false);
         }
         return array($roles_id_list, $permissions_id_list);
     }
@@ -94,7 +94,7 @@ class PermissionsAdderHelper {
     /**
      * @param $thing
      */
-    protected function _getIDListHelper($thing, $role=false)
+    protected function _getIdListHelper($thing, $role=false)
     {
         if (is_object($thing)) {
             return $thing->id;
