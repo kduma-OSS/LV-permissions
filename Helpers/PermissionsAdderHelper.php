@@ -15,23 +15,16 @@ use KDuma\Permissions\Models\Role;
 
 class PermissionsAdderHelper {
 
-//    public $permissions = [];
-//    public $roles = [];
-//    public $role_permissions = [];
-
-
     function createRole($str, $name){
         $role = Role::firstOrNew(['str_id' => $str]);
         $role->name = $name;
         $role->save();
         return $role;
-//        $this->roles[$str] = $name;
     }
 
     function deleteRole($str){
         Role::where('str_id', $str)->delete();
         return true;
-//        unset($this->roles[$str]);
     }
 
     function createPermission($str, $name){
@@ -39,8 +32,6 @@ class PermissionsAdderHelper {
         $permission->name = $name;
         $permission->save();
         return $permission;
-//        $this->permissions[$str] = $name;
-//        unset($this->permissions[$str]);
     }
     function deletePermission($str){
         Permission::where('str_id', $str)->delete();
