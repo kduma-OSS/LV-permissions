@@ -18,7 +18,7 @@ Then add the Service Provider to the providers array in `config/app.php`:
 
 Then add the Facades to the aliases array in `config/app.php`:
 
-    'Permissions'        => 'KDuma\Permissions\Facades',
+    'Permissions'        => 'KDuma\Permissions\Facades\Permissions',
     'PermissionsManager' => 'KDuma\Permissions\Facades\PermissionsManager'
     
 in your `User` model (`app/User.php`) add following line:
