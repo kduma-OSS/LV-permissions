@@ -1,6 +1,6 @@
 {
   "name": "kduma/permissions",
-  "description": "Simple (really?) package to provide Roles and Permissions to Laravel 5",
+  "description": "Simple (really?) package to provide Roles and Permissions to Laravel 5.1",
   "keywords": ["laravel", "eloquent", "permission", "roles"],
   "license": "MIT",
   "authors": [
@@ -16,11 +16,6 @@
   "autoload": {
     "psr-4": {
       "KDuma\\Permissions\\": ""
-    }
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-develop": "1.0-dev"
     }
   },
   "minimum-stability": "dev"

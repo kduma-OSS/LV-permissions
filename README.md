@@ -5,7 +5,7 @@
 [![License](https://poser.pugx.org/kduma/permissions/license.svg)](https://packagist.org/packages/kduma/permissions)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5babe580-a3a3-41cf-a1b6-3c266f29ef92/mini.png)](https://insight.sensiolabs.com/projects/5babe580-a3a3-41cf-a1b6-3c266f29ef92)
 
-Simple (really?) package to provide Roles and Permissions to Laravel 5
+Simple (really?) package to provide Roles and Permissions to Laravel 5.1
 
 # Setup
 Add the package to the require section of your composer.json and run `composer update`
