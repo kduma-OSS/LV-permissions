@@ -10,16 +10,16 @@ Simple (really?) package to provide Roles and Permissions to Laravel 5
 # Setup
 Add the package to the require section of your composer.json and run `composer update`
 
-    "kduma/permissions": "~1.0"
+    "kduma/permissions": "^1.1"
 
 Then add the Service Provider to the providers array in `config/app.php`:
 
-    'KDuma\Permissions\PermissionsServiceProvider',
+    KDuma\Permissions\PermissionsServiceProvider::class,
 
 Then add the Facades to the aliases array in `config/app.php`:
 
-    'Permissions'        => 'KDuma\Permissions\Facades\Permissions',
-    'PermissionsManager' => 'KDuma\Permissions\Facades\PermissionsManager'
+    'Permissions'        => KDuma\Permissions\Facades\Permissions::class,
+    'PermissionsManager' => KDuma\Permissions\Facades\PermissionsManager::class,
     
 in your `User` model (`app/User.php`) add following line:
 
@@ -28,11 +28,15 @@ in your `User` model (`app/User.php`) add following line:
 Add following line in your base controller (`app/Http/Controllers/Controller.php`):
 
     use \KDuma\Permissions\ProtectTrait;
+    
+Run the following command to copy migrations:
 
-Import migrations from migrations folder. First 4 are necessary, last two are examples you can use or make new based on.
+    php artisan vendor:publish --provider="KDuma\Permissions\PermissionsServiceProvider" --tag="migrations"
 
-- In `0000_00_00_000005_create_and_assign_roles_and_permissions.php` migration file are sample Roles and Permissions
-- In `0000_00_00_000006_create_administrator_account.php` migration file is created administrator account
+In `SampleMigrations` folder are examples you can use or make new based on.
+
+- In `2015_01_01_000005_create_and_assign_roles_and_permissions.php` migration file are sample Roles and Permissions
+- In `2015_01_01_000006_create_administrator_account.php` migration file is created administrator account
 
 # Usage
 ## Protecting controllers

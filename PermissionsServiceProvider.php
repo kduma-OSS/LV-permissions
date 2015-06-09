@@ -16,7 +16,11 @@ class PermissionsServiceProvider extends ServiceProvider {
 	{
 		$this->publishes([
 			__DIR__.'/Config/permissions.php' => config_path('permissions.php'),
-		]);
+		], 'config');
+
+        $this->publishes([
+            __DIR__.'/Migrations/' => database_path('/migrations')
+        ], 'migrations');
 	}
 
 	/**
@@ -29,10 +33,12 @@ class PermissionsServiceProvider extends ServiceProvider {
 		$this->mergeConfigFrom(
 			__DIR__.'/Config/permissions.php', 'permissions'
 		);
+
 		$this->app->singleton('permissions.templatehelper', function()
 		{
 			return new PermissionsTemplateHelper();
 		});
+
 		$this->app->singleton('permissions.adderhelper', function()
 		{
 			return new PermissionsAdderHelper();
