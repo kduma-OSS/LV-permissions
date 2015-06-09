@@ -21,13 +21,15 @@ Then add the Facades to the aliases array in `config/app.php`:
     'Permissions'        => KDuma\Permissions\Facades\Permissions::class,
     'PermissionsManager' => KDuma\Permissions\Facades\PermissionsManager::class,
     
+Then add the Middleware's to the `routeMiddleware` array in `app/Http/Kernel.php`:
+
+    'permission' => \KDuma\Permissions\Middleware\Permission::class,
+    'role' => \KDuma\Permissions\Middleware\Role::class,
+    
 in your `User` model (`app/User.php`) add following line:
 
     use \KDuma\Permissions\Permissions;
     
-Add following line in your base controller (`app/Http/Controllers/Controller.php`):
-
-    use \KDuma\Permissions\ProtectTrait;
     
 Run the following command to copy migrations:
 
@@ -39,17 +41,28 @@ In `SampleMigrations` folder are examples you can use or make new based on.
 - In `2015_01_01_000006_create_administrator_account.php` migration file is created administrator account
 
 # Usage
-## Protecting controllers
-In controller you can use `protect` method. 
+## Protecting controllers and routes
+You can use two Middleware's: `permission` and `role`
 
-```PHP
-$this->protect('permission');
+```php
+Route::get('admin/profile', [
+    'middleware' => 'role:editor',
+    'uses' => 'UserController@showProfile'
+]);
 ```
 or
    
-```PHP
-$this->protect(['list', 'of', 'required', 'permission']);
+```php
+class UserController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('permission:user.edit:user.panel');
+    }
+}
 ```
+
+You can provide more than one role/permission in one call by separating them using `:`. For example: `permission:perm1:perm2:perm3`. Middleware refuses access if user hasn't any of provided permissions/roles.
     
 ## Checking permissions in views
 You can use `Permissions` facade:
@@ -78,7 +91,8 @@ The easiest way to manage permissions is putting them in migrations files.
     - `PermissionsManager::detach('ROLES_LIST', 'PERMISSIONS_LIST');`
 
     
-    
+## Admin role
+As default `admin` role is setted to be root role. Root role always has all permissions. You can change it in configuration file.
     
     
     

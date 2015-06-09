@@ -1,5 +1,5 @@
 <?php namespace KDuma\Permissions;
-
+// TODO: Remove this trait
 
 use KDuma\Permissions\Helpers\PermissionsHelper;
 
