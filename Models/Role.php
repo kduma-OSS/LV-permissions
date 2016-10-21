@@ -1,10 +1,12 @@
-<?php namespace KDuma\Permissions\Models;
+<?php
+
+namespace KDuma\Permissions\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model {
-
-    protected $fillable = ['str_id','name'];
+class Role extends Model
+{
+    protected $fillable = ['str_id', 'name'];
 
     public function users()
     {

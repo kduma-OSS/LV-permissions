@@ -8,7 +8,6 @@ use KDuma\Permissions\Helpers\PermissionsHelper;
 
 class Permission
 {
-
     /**
      * The Guard implementation.
      *
@@ -42,13 +41,13 @@ class Permission
      */
     public function handle($request, Closure $next, $permissions)
     {
-        if(!empty($permissions) && $this->auth->check())
-        {
+        if (! empty($permissions) && $this->auth->check()) {
             $permissions = explode(':', $permissions);
 
             if ($this->permissionsHelper->can($permissions)) {
                 return $next($request);
             }
+
             return abort(403);
         }
         if ($request->ajax()) {
