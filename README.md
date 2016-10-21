@@ -4,6 +4,7 @@
 [![Latest Unstable Version](https://poser.pugx.org/kduma/permissions/v/unstable.svg)](https://packagist.org/packages/kduma/permissions) 
 [![License](https://poser.pugx.org/kduma/permissions/license.svg)](https://packagist.org/packages/kduma/permissions)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/5babe580-a3a3-41cf-a1b6-3c266f29ef92/mini.png)](https://insight.sensiolabs.com/projects/5babe580-a3a3-41cf-a1b6-3c266f29ef92)
+[![StyleCI](https://styleci.io/repos/30103076/shield?branch=master)](https://styleci.io/repos/30103076)
 
 Simple (really?) package to provide Roles and Permissions to Laravel 5.1
 
