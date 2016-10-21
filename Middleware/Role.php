@@ -8,7 +8,6 @@ use KDuma\Permissions\Helpers\PermissionsHelper;
 
 class Role
 {
-
     /**
      * The Guard implementation.
      *
@@ -42,13 +41,13 @@ class Role
      */
     public function handle($request, Closure $next, $roles)
     {
-        if(!empty($roles) && $this->auth->check())
-        {
+        if (! empty($roles) && $this->auth->check()) {
             $roles = explode(':', $roles);
 
             if ($this->permissionsHelper->is($roles)) {
                 return $next($request);
             }
+
             return abort(403);
         }
         if ($request->ajax()) {
